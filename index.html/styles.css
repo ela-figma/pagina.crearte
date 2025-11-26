@@ -1,0 +1,281 @@
+/* ===========================
+   VARIABLES DE DISEÑO (colores, radios)
+   👉 Paleta de marca: rojo, negro y dorado
+=========================== */
+:root{
+  --bg: radial-gradient(circle, #ff0000 0%, #0b0c10 100%);
+  --card: #111318;     /* Fondo de tarjetas gris oscuro */
+  --alt: #1a1a1a;      /* Fondo alterno de secciones */
+  --text: #E8EAF0;     /* Texto principal claro */
+  --muted: #AAB2C2;    /* Texto secundario */
+  --primary: #ff0000;  /* Rojo principal */
+  --accent: #ff0707;   /* Dorado secundario */
+  --ring: rgba(255, 0, 0, 0.45); /* Foco en rojo */
+  --radius: 16px;      /* Bordes redondeados */
+}
+
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+/* RESETEO BÁSICO */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: 'Montserrat', Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height:1.6;
+}
+
+
+/* LAYOUT GENERAL */
+.container{width:min(1100px, 92%); margin:0 auto}
+.section{padding:72px 0}
+.section.alt{background: var(--alt)}
+.section-head{margin-bottom:28px}
+.section-head h2{font-size:32px;margin:0 0 8px;color:var(--accent)}
+.section-head p{color:var(--muted);margin:0}
+
+/* SECCIÓN NOSOTROS */
+#nosotros {background: var(--alt);}
+#nosotros .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+#nosotros .gallery-item {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform .3s ease;
+}
+#nosotros .gallery-item:hover {transform: translateY(-6px);}
+#nosotros .gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+#nosotros .gallery-item p {
+  margin: 0;
+  padding: 12px;
+  background: #111318;
+  color: var(--text);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* GRIDS */
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width: 980px){
+  .grid-2{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 640px){ .grid-3{grid-template-columns:1fr} }
+
+/* HEADER */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(11,12,16,0.8); backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--primary);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800}
+.brand-logo {
+  width: 160px;
+  height: auto;
+  filter: brightness(1.2) contrast(1.1);
+}
+.nav{display:flex;gap:16px;align-items:center}
+.nav a{
+  color:var(--text);
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:10px;
+}
+.nav a:hover{background:var(--primary); color:#fff;}
+.menu-btn{display:none;background:none;border:none;color:var(--text);font-size:22px}
+@media (max-width:900px){
+  .nav{display:none}
+  .menu-btn{display:block}
+}
+.mobile-nav{
+  display:none; flex-direction:column; gap:10px; padding:12px 4%;
+  border-bottom:1px solid #151822; background:#0b0c10;
+}
+.mobile-nav a{color:var(--text); text-decoration:none; padding:10px;border-radius:10px}
+.mobile-nav .btn-primary{display:inline-block}
+
+/* HERO */
+.hero{padding-top:86px}
+.hero-copy h1{font-size:44px;line-height:1.1;margin:0 0 12px}
+.gradient{
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero-copy p{color:var(--muted)}
+.hero-cta{display:flex;gap:12px;margin-top:16px}
+.badges{display:flex;gap:12px;list-style:none;padding:0;margin:16px 0 0;color:#B8C1D8}
+.hero-art img{width:100%;height:auto;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+
+/* TARJETAS */
+.cards .card{
+  background: var(--card);
+  border:1px solid var(--primary);
+  padding:20px;
+  border-radius: var(--radius);
+}
+.cards .card h3{margin-top:0;color:var(--accent)}
+
+/* PRODUCTOS */
+.producto-item {
+  background: var(--card);
+  border: 1px solid #202334;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.producto-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.producto-item .info {padding: 14px;}
+.producto-item h3{color: var(--accent);}
+.producto-item ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+/* MOCKUPS 3D */
+.mv{width:100%;height:400px;background:#0f1320;border:1px solid #202334;border-radius:20px}
+
+/* ===========================
+   FORMULARIO DE PEDIDOS (CreArte)
+=========================== */
+.form {
+  background: var(--card);
+  border: 1px solid var(--primary);   /* Rojo */
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Campos */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: var(--accent); /* Dorado */
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  background: #0f1320;      /* Negro azulado */
+  color: var(--text);       /* Texto claro */
+  border: 1px solid #2a2f44;
+  padding: 12px;
+  border-radius: 12px;
+  outline: none;
+  transition: border .3s, box-shadow .3s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: var(--primary); /* Rojo al foco */
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3);
+}
+
+/* Placeholders */
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Botones */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .3s ease;
+}
+
+/* Botón rojo principal */
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), #b30000);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+/* Botón con borde dorado */
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Errores y mensajes */
+.error {
+  display: none;
+  color: #ff4d4d;
+  font-size: 12px;
+}
+
+.form-msg {
+  margin-top: 10px;
+  color: var(--accent); /* Dorado */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Nota de privacidad */
+.note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.note strong {
+  color: var(--accent); /* Dorado */
+}
+
+/* FOOTER */
+.site-footer{
+  border-top:1px solid var(--primary);
+  padding:22px 0;
+  background:#0b0c10;
+}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.small{color:var(--accent);font-size:14px}
